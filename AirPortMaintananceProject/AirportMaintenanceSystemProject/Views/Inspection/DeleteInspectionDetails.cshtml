@@ -1,0 +1,42 @@
+﻿@model AirportMaintenanceSystemProject.Models.Inspection
+
+@{
+    ViewBag.Title = "DeleteInspectionDetails";
+}
+<head>
+    <link rel="stylesheet" href="@Url.Content("/Content/Delete.css")" />
+</head>
+<div class="form-horizontal">
+    <div class="heading">
+        <h2>DeleteOperation</h2>
+        <h3>Are you sure you want to delete this?</h3>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-primary" /> |
+            @Html.ActionLink("Back to List", "InspectionList", new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>
+
+@*<head>
+        <link rel="stylesheet" href="@Url.Content("/Content/Delete.css")" />
+    </head>
+    <div class="form-horizontal">
+        <div class="heading">
+            <h3>Are you sure you want to delete this?</h3>
+            </div>
+                <hr />
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-primary" /> |
+                        @Html.ActionLink("Back to List", "InspectionList")
+                    </div>
+                }
+            </div>*@

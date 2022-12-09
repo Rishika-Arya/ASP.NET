@@ -1,0 +1,37 @@
+﻿@model IEnumerable<AirportMaintenanceSystemProject.Models.Inventory>
+
+
+<head>
+    <link rel="stylesheet" href="@Url.Content("/Content/MasterCss.css")" />
+</head>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+       
+    </tr>
+}
+
+</table>

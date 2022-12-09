@@ -1,0 +1,93 @@
+﻿
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+<head>
+    <link rel="stylesheet" href="@Url.Content("/Content/DashboardCss.css")" />
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" integrity="sha512-F5QTlBqZlvuBEs9LQPqc1iZv2UMxcVXezbHzomzS6Df4MZMClge/8+gXrKw2fl5ysdk4rWjR0vKS7NNkfymaBQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>"
+<
+<div class="container">
+    <div class="col-lg-3">
+        <div class="card" style="width:200px">
+            <div class="card-body action">
+                
+                <h2 style="text-align:center">@Html.ActionLink("Services", "AirportServices", "DashBoard")</h2>
+                <div style="text-align:center">
+
+                    <i class="fa fa-wrench"></i>
+                    @*<h2 style="text-align:center">20</h2>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="col-lg-3">
+        <div class="card" style="width:200px">
+            <div class="card-body action">
+                <h2 style="text-align:center">@Html.ActionLink("Staffs", "StaffList", "DashBoard")</h2>
+                <div style="text-align:center">
+
+                    <i id="icon" class="fa fa-users"></i>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br >
+<div class="container">
+    <div class="col-lg-3">
+        <div class="card" style="width:200px">
+            <div class="card-body action">
+                <h2 style="text-align:center">@Html.ActionLink("Departments", "DepartmentList", "DashBoard")</h2>
+                <div style="text-align:center">
+
+                    <i id="icon" class="fa fa-briefcase"></i>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<br >
+<div class="container">
+    <div class="col-lg-3">
+        <div class="card" style="width:200px">
+            <div class="card-body action">
+                <h2 style="text-align:center">@Html.ActionLink("Equipments", "ItemList", "AirportItem")</h2>
+                
+                <div style="text-align:center">
+
+                    <i id="icon" class="fa fa-tasks"></i>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="container"></div>
+<div class="container"></div>
+<div class="container"></div>
+<div class="container"></div>
+
+<div class="Aboutform">
+    <h2> About Us--</h2>
+    <hr />
+    <div class="paragraph">
+        <p>
+            An airport is an aerodrome with extended facilities, mostly for commercial air transport.[1][2] Airports usually consists of a landing area, which comprises an aerially accessible open space including at least one operationally active surface such as a runway for a plane to take off and to land[3] or a helipad,[4] and often includes adjacent utility buildings such as control towers, hangars[5] and terminals, to maintain and monitor aircraft. Larger airports may have airport aprons, taxiway bridges, air traffic control centres, passenger facilities such as restaurants and lounges, and emergency services. In some countries, the US in particular, airports also typically have one or more fixed-base operators, serving general aviation.
+
+            Operating airports is extremely complicated, with a complex system of aircraft support services, passenger services, and aircraft control services contained within the operation. Thus airports can be major employers, as well as important hubs for tourism and other kinds of transit. Because they are sites of operation for heavy machinery, a number of regulations and safety measures have been implemented in airports, in order to reduce hazards. Additionally, airports have major local environmental impacts, as both large sources of air pollution, noise pollution and other environmental impacts, making them sites that acutely experience the environmental effects of aviation. Airports are also vulnerable infrastructure to extreme weather, climate change caused sea level rise and other disasters.
+        </p>
+        </div>
+    </div>
+
+   

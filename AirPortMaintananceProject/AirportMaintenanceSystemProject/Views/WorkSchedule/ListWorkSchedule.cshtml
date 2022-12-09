@@ -1,0 +1,44 @@
+﻿@model IEnumerable<AirportMaintenanceSystemProject.Models.Operation>
+
+@{
+    ViewBag.Title = "ListWorkSchedule";
+}
+
+<head>
+    <link rel="stylesheet" href="@Url.Content("/Content/MasterCss.css")" />
+</head>
+
+<h2>Scheduled Work List With StaffId</h2>
+<br />
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.StaffId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffId)
+            </td>
+           <td>
+            @Html.ActionLink("AssignTask", "AssignTask", new { id = item.OperationId } ,new { @class = "btn btn-primary" }) 
+
+        </td>
+        </tr>
+    }
+
+</table>

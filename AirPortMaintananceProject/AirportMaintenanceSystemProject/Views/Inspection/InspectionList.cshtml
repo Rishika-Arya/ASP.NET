@@ -1,0 +1,101 @@
+﻿@model IEnumerable<AirportMaintenanceSystemProject.Models.Inspection>
+
+@{
+    ViewBag.Title = "InspectionList";
+}
+
+<h2>InspectionList</h2>
+<head>
+    <link rel="stylesheet" href="@Url.Content("/Content/MasterCss.css")" />
+</head>
+<p>
+    @using (@Html.BeginForm("InspectionList", "Inspection"))
+    {
+        @Html.TextBox("departmentsearch") <input type="submit" value="search" class="btn btn-primary" />
+    }
+</p>
+@if (ViewBag.Message != null)
+{
+
+    <div class="alert alert-success" role="alert">
+        @ViewBag.Message
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Frequency)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InspectedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NextDueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Review)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentId)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model != null && Model.Count() > 0)
+    {
+
+
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Frequency)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InspectedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NextDueDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Review)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentId)
+                </td>
+
+                <td>
+                    @if (User.IsInRole("Manager"))
+                    {
+                        @Html.ActionLink("UpdateInspection", "UpdateInspectionDetails", new { id = item.InspectionId }, new { @class = "btn btn-primary" })
+                    }
+                    <br /><br />
+                    @*@Html.ActionLink("Details", "Details", new { id = item.InspectionId }) |*@
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("DeleteInspection", "DeleteInspectionDetails", new { id = item.InspectionId }, new { @class = "btn btn-primary" })
+                    }
+                    </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <td colspan="4" class="text-center"><b>No Data Available . Please Add Data By CLick On Create Button</b></td>
+
+    }
+
+</table>

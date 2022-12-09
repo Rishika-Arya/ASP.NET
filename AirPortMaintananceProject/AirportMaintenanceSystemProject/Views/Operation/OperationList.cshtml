@@ -1,0 +1,99 @@
+﻿@model IEnumerable<AirportMaintenanceSystemProject.Models.Operation>
+
+@{
+    ViewBag.Title = "OperationList";
+}
+
+<h2>OperationList</h2>
+<head>
+    <link rel="stylesheet" href="@Url.Content("/Content/MasterCss.css")" />
+</head>
+<p>
+    @using (@Html.BeginForm("Index", "Operations"))
+    {
+        @Html.TextBox("departmentsearch") <input type="submit" value="search" class="btn btn-primary" />
+
+    }
+</p>
+<p class="text-right">
+
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("AddNewOperation", "AddNewOperation", "Operation", new { @class = "btn btn-primary" })
+    }
+
+
+
+</p>
+@if (ViewBag.Message != null)
+{
+
+    <div class="alert alert-success" role="alert">
+        @ViewBag.Message
+    </div>
+}
+
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.DepartmentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffId)
+            </th>*@
+        <th></th>
+    </tr>
+    @if (Model != null && Model.Count() > 0)
+    {
+       foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Remarks)
+                </td>
+               
+                <td>
+                    @if (User.IsInRole("Manager"))
+                        {
+                        @Html.ActionLink("UpdateOperation", "UpdateOperation", new { id = item.OperationId }, new { @class = "btn btn-primary" })
+                            }
+                    @*@Html.ActionLink("Details", "Details", new { id = item.OperationId }) |*@
+                    <br /><br />
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("DeleteOperation", "DeleteOperation", new { id = item.OperationId }, new { @class = "btn btn-primary" })
+                    }
+
+                    @*@Html.ActionLink("AssignTask", "AssignTask", new { id = item.OperationId }, new { @class = "btn btn-primary" })*@
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <td colspan="4" class="text-center"><b>No Data Available . Please Add Data By CLick On Create Button</b></td>
+
+    }
+</table>
+
+
+                

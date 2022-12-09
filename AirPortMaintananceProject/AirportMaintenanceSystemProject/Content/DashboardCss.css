@@ -1,0 +1,42 @@
+﻿
+body {
+    background-image: url(https://images.pexels.com/photos/163771/airport-airplanes-gates-flight-line-163771.jpeg?cs=srgb&dl=pexels-pixabay-163771.jpg&fm=jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.action {
+    background: rgba(0,0,0,0.5);
+    
+}
+.svg-inline--fa {
+    color: navajowhite;
+    font-size: 50px;
+}
+
+    .svg-inline--fa:hover {
+        color: red;
+        font-size: 60px;
+    }
+    a{
+        color:white;
+    }
+    a:hover{
+     color:white;
+    }
+.Aboutform {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 550px;
+    height: 580px;
+    padding: 30px 40px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.5);
+    color: white;
+}
+p{
+    margin:auto auto 10px;
+    color:white;
+
+}

@@ -1,0 +1,32 @@
+﻿.image {
+    background-image: url(https://www.lufthansa-technik.com/documents/5875801/6291457/180530_LTPR_048.jpg/d42db99a-9f82-4c73-a011-cc51690499a3?t=1537960774038);
+    /*    background-image: url(https://images.pexels.com/photos/683039/pexels-photo-683039.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);*/
+    height: 200px;
+    background-repeat: no-repeat;
+    
+}
+
+.header {
+    padding-top: 50px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+td{
+    width:500px;
+    padding-right: 50px;
+    
+}
+.picture{
+    width:300px;
+}
+.table{
+    background-color:skyblue;
+}
+tr{
+    color:black;
+    font-family:Arial, Helvetica, sans-serif;
+}
+body{
+    background-color:antiquewhite;
+}

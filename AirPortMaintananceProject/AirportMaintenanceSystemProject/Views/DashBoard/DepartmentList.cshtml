@@ -1,0 +1,74 @@
+﻿@model IEnumerable<AirportMaintenanceSystemProject.Models.Department>
+
+
+<head>
+    <title>Departments</title>
+
+    <meta name="viewport" content="width=device-width ,initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="@Url.Content("/Content/DepartmentListCss.css")" />
+
+
+</head>
+<br />
+<div class="image">
+    
+</div>
+
+
+
+
+<table class="table">
+    <tr>
+        <th><h1>Departments</h1></th>
+
+
+    </tr>
+    <tr>
+        <td><h2>ELECTRICAL</h2>
+            <p>
+                Ensuring that installation and operations conform to standards and customer requirements by preparing electrical systems specifications, technical drawings or topographical maps.Some of the Electrical Systems at the Airport include:
+
+                Fully equipped Maintenance Section.
+                Highly sensitive relay, protection and safety systems
+                Centralized A/C plant with two standby units for Domestic terminal, International terminal
+                Centralized A/C with two standby units for ATC tower
+                
+                
+            </p></td>
+
+        <td class="picture" height=100 width=100><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsTCZW9TZ95cXnAMgLDdPvpH0663QLtLPJgA&usqp=CAU" alt="" height=300 width=500 /></td>
+    </tr>
+    <tr>
+        <td><h1>Visual-Aid</h1>
+            <p>
+                Airport pavement markings and signs provide information that is useful to a pilot during takeoff, landing, and taxiing.
+                Runway numbers and letters are determined from the approach direction
+                ALS provide the basic means to transition from instrument flight to visual flight for landing. Operational requirements dictate the sophistication and configuration of the approach light system for a particular runway.
+            </p></td>
+       
+        <td height=100 width=100><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc4pd8yrWGE6wLNRn3D9IAF9ld50ndgPUQyXwlIVtqG-eChwSLRJsRy7DnL5b9CdntmA&usqp=CAU" alt="" height=300 width=500 /></td>
+    </tr>
+</table>
+
+@*<table class="table">*@
+        <!--<tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcVqJpX4MV5xwWL8QjlMsO_Ase00R11YYwuPl8IwdmmrUis4RgRMCnwOC3jWiOPAlzC1o&usqp=CAU" height="100" width="100"></td>
+            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXg4cJY2WcuSI883umr1TOIOJv3FMio_UUQw&usqp=CAU" height="100" width="100"></td>
+
+
+        </tr>
+    }
+
+    </table>-->

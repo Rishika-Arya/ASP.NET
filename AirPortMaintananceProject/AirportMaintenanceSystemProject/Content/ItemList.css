@@ -1,0 +1,19 @@
+﻿body {
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd1dqkfC28ywuHLFC0bt8LaoS35OleEmDH6Q&usqp=CAU);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+td {
+    background-color: white;
+}
+
+tr {
+    background-color: cadetblue;
+}
+
+h2 {
+    color: white;
+}

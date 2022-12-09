@@ -1,0 +1,76 @@
+﻿@model AirportMaintenanceSystemProject.Models.UserLoginRegister
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<head>
+    <link rel="stylesheet" href="@Url.Content("/Content/LoginCss.css")" />
+</head>
+
+@if (ViewBag.msg != null)
+{
+    <h2>@ViewBag.msg</h2>
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="loginform">
+        <h1>Login</h1>
+        @*<hr />*@
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2 lb" })
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2 lb" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div>
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-10 button">
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                    @Html.Raw(ViewData["SuccessMessage"])
+                    <br /><br />
+                    <div class="signuplink">
+                        <p>Register Yourself!</p>
+                        @Html.ActionLink("SignUp", "SignUp", "RegisterLogin", new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            @*<div class="form-group">
+                    <div class="col-md-offset-3 col-md-10">
+                        @Html.ActionLink("SignUp", "SignUp", "RegisterLogin", new { @class = "btn btn-primary" })
+                    </div>
+                </div>*@
+        </div>
+    </div>
+}
+<!--<div class="form-group">-->
+@*@Html.ActionLink("Sign-Up", "SignUp")*@
+<!--@Html.ActionLink("SignUp", "SignUp", "RegisterLogin", new { @class = "btn btn-primary" })
+</div>-->
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

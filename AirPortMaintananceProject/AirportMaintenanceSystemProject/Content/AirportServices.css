@@ -1,0 +1,99 @@
+﻿body {
+    /* background-image:url(https://iam141.org/wp-content/uploads/2022/06/iMail-6_16_2022_Aircraft_Safety-2.png);*/
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd1dqkfC28ywuHLFC0bt8LaoS35OleEmDH6Q&usqp=CAU);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.cards{
+    margin: 0 auto;
+    max-width: 1000px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    font-family: Arial;
+    border-radius:5px;
+  
+}
+
+.card6 {
+    width: 300px;
+    box-shadow: 0 0 1px rgba(0,0,0,0);
+    margin-right: 100px;
+    color: white;
+    border-radius:10px;
+    margin-left:20px;
+    
+}
+.card1 {
+    width: 299px;
+    box-shadow: 0 0 1px rgba(0,0,0,0);
+    margin-right: 100px;
+    color: white;
+}
+.card2 {
+    width: 274px;
+    box-shadow: 0 0 1px rgba(0,0,0,0);
+    color: white;
+}
+.card3 {
+    width: 238px;
+    box-shadow: 0 0 1px rgba(0,0,0,0);
+    color: white;
+}
+.card4 {
+    width: 290px;
+    box-shadow: 0 0 1px rgba(0,0,0,0);
+    color: white;
+}
+.card5 {
+    width: 275px;
+    box-shadow: 0 0 1px rgba(0,0,0,0);
+    color: white;
+}
+
+.card6 {
+    width: 250px;
+    box-shadow: 0 0 1px rgba(0,0,0,0);
+    color: white;
+}
+.card7 {
+    width: 200px;
+    box-shadow: 0 0 1px rgba(0,0,0,0);
+    
+}
+.card_image {
+    width: 300px;
+    display: block;
+    color: white;
+    border-radius:10px;
+    box-shadow:2px 2px 10px white;
+}
+.card__content {
+    line-height: 1.5;
+    font-size: 0.9em;
+    padding: 15px;
+    background:#564265 ;
+    box-shadow:2px 2px white;
+    
+    
+}
+.card__content > p:last-of-type{
+    margin-bottom:0;
+}
+.card__info{
+    padding:15px;
+    display:flex;
+   background:#564265;
+   font-size:0.8em;
+   border-bottom:2px solid #cccccc;
+   color:white;
+   border-radius:10px;
+   box-shadow:2px 2px white;
+}
+img{
+    box-shadow:2px 2px 2px 2px  black;
+
+}
+    img:hover {
+        box-shadow: 2px 2px 2px 2px white;
+    }

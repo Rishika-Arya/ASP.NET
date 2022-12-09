@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="767cb39478664e8db4aff75eff2d4136" Name="Diagram1">
+        <EntityTypeShape EntityType="AirportMaintenanceSystemModel.Department" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportMaintenanceSystemModel.Inspection" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportMaintenanceSystemModel.Inventory" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportMaintenanceSystemModel.Item" Width="1.5" PointX="3.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportMaintenanceSystemModel.Operation" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportMaintenanceSystemModel.Role" Width="1.5" PointX="7.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportMaintenanceSystemModel.Staff" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportMaintenanceSystemModel.UserLoginRegister" Width="1.5" PointX="7.75" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="AirportMaintenanceSystemModel.FK__Inspectio__Depar__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportMaintenanceSystemModel.FK__Inventory__Depar__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportMaintenanceSystemModel.FK__Operation__Depar__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportMaintenanceSystemModel.FK__Inventory__ItemI__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportMaintenanceSystemModel.FK__Operation__Staff__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportMaintenanceSystemModel.FK__UserLogin__RoleI__2E1BDC42" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AirportMaintenanceSystemModel.AssignTask" Width="1.5" PointX="5.25" PointY="0.75" />
+        <AssociationConnector Association="AirportMaintenanceSystemModel.FK__AssignTas__Opera__5DCAEF64" />
+        <AssociationConnector Association="AirportMaintenanceSystemModel.FK__AssignTas__Staff__5EBF139D" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

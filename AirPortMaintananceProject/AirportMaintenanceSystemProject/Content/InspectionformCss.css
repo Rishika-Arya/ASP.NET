@@ -1,0 +1,17 @@
+﻿body {
+    background-color:cadetblue;
+}
+.form-horizontal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 600px;
+    width: 700px;
+    box-sizing: border-box;
+    background: white;
+    padding: 40px 40px;
+}
+.heading {
+    background: pink;
+}

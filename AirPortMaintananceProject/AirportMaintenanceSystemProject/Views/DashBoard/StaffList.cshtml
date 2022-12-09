@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AirportMaintenanceSystemProject.Models.Staff>
+<head>
+    <title>Services</title>
+
+    <meta name="viewport" content="width=device-width ,initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="@Url.Content("/Content/StaffListCss.css")" />
+
+</head>
+
+<p>
+    @Html.ActionLink("Add New Staffs", "AddStaff", "DashBoard", new { @class = "btn btn-primary" })
+</p>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffPhoneNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffAddress)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffPhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffAddress)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.StaffId }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.StaffId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.StaffId })
+                </td>*@
+        </tr>
+    }
+
+</table>

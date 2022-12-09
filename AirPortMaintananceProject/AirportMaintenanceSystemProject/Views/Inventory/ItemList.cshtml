@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AirportMaintenanceSystemProject.Models.Item>
+<hr />
+<head>
+    <link rel="stylesheet" href="@Url.Content("/Content/MasterCss.css")" />
+</head>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemCost)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.ItemName, "InventoryDetails", new { Id = item.ItemId })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemCost)
+            </td>
+
+        </tr>
+    }
+</table>

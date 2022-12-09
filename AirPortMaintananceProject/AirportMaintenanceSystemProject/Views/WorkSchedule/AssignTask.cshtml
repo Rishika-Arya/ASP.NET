@@ -1,0 +1,31 @@
+﻿
+
+@model AirportMaintenanceSystemProject.Models.AssignTask
+
+@{
+    ViewBag.Title = "AssignTask";
+}
+<head>
+    <link rel="stylesheet" href="@Url.Content("/Content/Delete.css")" />
+</head>
+
+
+
+<h3>Assign Task To Staff?</h3>
+
+<div>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="YES" class="btn btn-default" />
+
+            @Html.ActionLink("See List of Assigned Task", "AssignTaskList")
+        </div>
+    }
+</div>
+
+

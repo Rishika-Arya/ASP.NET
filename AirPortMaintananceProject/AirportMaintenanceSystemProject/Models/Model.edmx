@@ -1,0 +1,608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AirportMaintenanceSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AssignTask">
+          <Key>
+            <PropertyRef Name="AssignTaskId" />
+          </Key>
+          <Property Name="AssignTaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Task" Type="varchar" MaxLength="200" />
+          <Property Name="Staff" Type="varchar" MaxLength="200" />
+          <Property Name="OperationId" Type="int" />
+          <Property Name="StaffId" Type="int" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Inspections">
+          <Key>
+            <PropertyRef Name="InspectionId" />
+          </Key>
+          <Property Name="InspectionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="400" />
+          <Property Name="Frequency" Type="varchar" MaxLength="200" />
+          <Property Name="Status" Type="varchar" MaxLength="200" />
+          <Property Name="InspectedDate" Type="date" />
+          <Property Name="NextDueDate" Type="date" />
+          <Property Name="Review" Type="varchar" MaxLength="500" />
+          <Property Name="DepartmentId" Type="int" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="400" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="DepartmentId" Type="int" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" MaxLength="100" />
+          <Property Name="ItemCost" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Operations">
+          <Key>
+            <PropertyRef Name="OperationId" />
+          </Key>
+          <Property Name="OperationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="400" />
+          <Property Name="Status" Type="varchar" MaxLength="100" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="StaffId" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleTitle" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="int" Nullable="false" />
+          <Property Name="StaffName" Type="varchar" MaxLength="200" />
+          <Property Name="StaffEmail" Type="varchar" MaxLength="200" />
+          <Property Name="StaffPhoneNo" Type="int" />
+          <Property Name="StaffAddress" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="UserLoginRegister">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="200" />
+          <Property Name="LastName" Type="varchar" MaxLength="200" />
+          <Property Name="UserName" Type="varchar" MaxLength="200" />
+          <Property Name="Password" Type="varchar" MaxLength="200" />
+          <Property Name="RoleId" Type="int" />
+        </EntityType>
+        <Association Name="FK__AssignTas__Opera__5DCAEF64">
+          <End Role="Operations" Type="Self.Operations" Multiplicity="0..1" />
+          <End Role="AssignTask" Type="Self.AssignTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operations">
+              <PropertyRef Name="OperationId" />
+            </Principal>
+            <Dependent Role="AssignTask">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AssignTas__Staff__5EBF139D">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="AssignTask" Type="Self.AssignTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="StaffId" />
+            </Principal>
+            <Dependent Role="AssignTask">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inspectio__Depar__38996AB5">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Inspections" Type="Self.Inspections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="Inspections">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventory__Depar__3C69FB99">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventory__ItemI__3B75D760">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Operation__Depar__34C8D9D1">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Operation__Staff__35BCFE0A">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="StaffId" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserLogin__RoleI__440B1D61">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="UserLoginRegister" Type="Self.UserLoginRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserLoginRegister">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AirportMaintenanceSystemModelStoreContainer">
+          <EntitySet Name="AssignTask" EntityType="Self.AssignTask" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inspections" EntityType="Self.Inspections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operations" EntityType="Self.Operations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLoginRegister" EntityType="Self.UserLoginRegister" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AssignTas__Opera__5DCAEF64" Association="Self.FK__AssignTas__Opera__5DCAEF64">
+            <End Role="Operations" EntitySet="Operations" />
+            <End Role="AssignTask" EntitySet="AssignTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AssignTas__Staff__5EBF139D" Association="Self.FK__AssignTas__Staff__5EBF139D">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="AssignTask" EntitySet="AssignTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inspectio__Depar__38996AB5" Association="Self.FK__Inspectio__Depar__38996AB5">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Inspections" EntitySet="Inspections" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventory__Depar__3C69FB99" Association="Self.FK__Inventory__Depar__3C69FB99">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventory__ItemI__3B75D760" Association="Self.FK__Inventory__ItemI__3B75D760">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Operation__Depar__34C8D9D1" Association="Self.FK__Operation__Depar__34C8D9D1">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Operation__Staff__35BCFE0A" Association="Self.FK__Operation__Staff__35BCFE0A">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserLogin__RoleI__440B1D61" Association="Self.FK__UserLogin__RoleI__440B1D61">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserLoginRegister" EntitySet="UserLoginRegister" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AirportMaintenanceSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Inspections" Relationship="Self.FK__Inspectio__Depar__38996AB5" FromRole="Department" ToRole="Inspections" />
+          <NavigationProperty Name="Inventories" Relationship="Self.FK__Inventory__Depar__3C69FB99" FromRole="Department" ToRole="Inventory" />
+          <NavigationProperty Name="Operations" Relationship="Self.FK__Operation__Depar__34C8D9D1" FromRole="Department" ToRole="Operations" />
+        </EntityType>
+        <EntityType Name="Inspection">
+          <Key>
+            <PropertyRef Name="InspectionId" />
+          </Key>
+          <Property Name="InspectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="Frequency" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="InspectedDate" Type="DateTime" Precision="0" />
+          <Property Name="NextDueDate" Type="DateTime" Precision="0" />
+          <Property Name="Review" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Inspectio__Depar__38996AB5" FromRole="Inspections" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Inventory__Depar__3C69FB99" FromRole="Inventory" ToRole="Department" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Inventory__ItemI__3B75D760" FromRole="Inventory" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ItemCost" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Inventories" Relationship="Self.FK__Inventory__ItemI__3B75D760" FromRole="Item" ToRole="Inventory" />
+        </EntityType>
+        <EntityType Name="Operation">
+          <Key>
+            <PropertyRef Name="OperationId" />
+          </Key>
+          <Property Name="OperationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="StaffId" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Operation__Depar__34C8D9D1" FromRole="Operations" ToRole="Department" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK__Operation__Staff__35BCFE0A" FromRole="Operations" ToRole="Staff" />
+          <NavigationProperty Name="AssignTasks" Relationship="AirportMaintenanceSystemModel.FK__AssignTas__Opera__5DCAEF64" FromRole="Operation" ToRole="AssignTask" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserLoginRegisters" Relationship="Self.FK__UserLogin__RoleI__2E1BDC42" FromRole="Role" ToRole="UserLoginRegister" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+          <Property Name="StaffName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="StaffEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="StaffPhoneNo" Type="Int32" />
+          <Property Name="StaffAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Operations" Relationship="Self.FK__Operation__Staff__35BCFE0A" FromRole="Staff" ToRole="Operations" />
+          <NavigationProperty Name="AssignTasks" Relationship="AirportMaintenanceSystemModel.FK__AssignTas__Staff__5EBF139D" FromRole="Staff" ToRole="AssignTask" />
+        </EntityType>
+        <EntityType Name="UserLoginRegister">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RoleId" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__UserLogin__RoleI__2E1BDC42" FromRole="UserLoginRegister" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK__Inspectio__Depar__38996AB5">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Inspections" Type="Self.Inspection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="Inspections">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventory__Depar__3C69FB99">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Operation__Depar__34C8D9D1">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Operations" Type="Self.Operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventory__ItemI__3B75D760">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Operation__Staff__35BCFE0A">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Operations" Type="Self.Operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="StaffId" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserLogin__RoleI__2E1BDC42">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="UserLoginRegister" Type="Self.UserLoginRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserLoginRegister">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AirportMaintenanceSystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Inspections" EntityType="Self.Inspection" />
+          <EntitySet Name="Inventories" EntityType="Self.Inventory" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="Operations" EntityType="Self.Operation" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Staffs" EntityType="Self.Staff" />
+          <EntitySet Name="UserLoginRegisters" EntityType="Self.UserLoginRegister" />
+          <AssociationSet Name="FK__Inspectio__Depar__38996AB5" Association="Self.FK__Inspectio__Depar__38996AB5">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Inspections" EntitySet="Inspections" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventory__Depar__3C69FB99" Association="Self.FK__Inventory__Depar__3C69FB99">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Operation__Depar__34C8D9D1" Association="Self.FK__Operation__Depar__34C8D9D1">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventory__ItemI__3B75D760" Association="Self.FK__Inventory__ItemI__3B75D760">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Operation__Staff__35BCFE0A" Association="Self.FK__Operation__Staff__35BCFE0A">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserLogin__RoleI__2E1BDC42" Association="Self.FK__UserLogin__RoleI__2E1BDC42">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="UserLoginRegister" EntitySet="UserLoginRegisters" />
+          </AssociationSet>
+          <EntitySet Name="AssignTasks" EntityType="AirportMaintenanceSystemModel.AssignTask" />
+          <AssociationSet Name="FK__AssignTas__Opera__5DCAEF64" Association="AirportMaintenanceSystemModel.FK__AssignTas__Opera__5DCAEF64">
+            <End Role="Operation" EntitySet="Operations" />
+            <End Role="AssignTask" EntitySet="AssignTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AssignTas__Staff__5EBF139D" Association="AirportMaintenanceSystemModel.FK__AssignTas__Staff__5EBF139D">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="AssignTask" EntitySet="AssignTasks" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AssignTask">
+          <Key>
+            <PropertyRef Name="AssignTaskId" />
+          </Key>
+          <Property Name="AssignTaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Task" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Staff" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OperationId" Type="Int32" />
+          <Property Name="StaffId" Type="Int32" />
+          <NavigationProperty Name="Operation" Relationship="AirportMaintenanceSystemModel.FK__AssignTas__Opera__5DCAEF64" FromRole="AssignTask" ToRole="Operation" />
+          <NavigationProperty Name="Staff1" Relationship="AirportMaintenanceSystemModel.FK__AssignTas__Staff__5EBF139D" FromRole="AssignTask" ToRole="Staff" />
+        </EntityType>
+        <Association Name="FK__AssignTas__Opera__5DCAEF64">
+          <End Type="AirportMaintenanceSystemModel.Operation" Role="Operation" Multiplicity="0..1" />
+          <End Type="AirportMaintenanceSystemModel.AssignTask" Role="AssignTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operation">
+              <PropertyRef Name="OperationId" />
+            </Principal>
+            <Dependent Role="AssignTask">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AssignTas__Staff__5EBF139D">
+          <End Type="AirportMaintenanceSystemModel.Staff" Role="Staff" Multiplicity="0..1" />
+          <End Type="AirportMaintenanceSystemModel.AssignTask" Role="AssignTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="StaffId" />
+            </Principal>
+            <Dependent Role="AssignTask">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AirportMaintenanceSystemModelStoreContainer" CdmEntityContainer="AirportMaintenanceSystemEntities">
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="AirportMaintenanceSystemModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inspections">
+            <EntityTypeMapping TypeName="AirportMaintenanceSystemModel.Inspection">
+              <MappingFragment StoreEntitySet="Inspections">
+                <ScalarProperty Name="InspectionId" ColumnName="InspectionId" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="InspectedDate" ColumnName="InspectedDate" />
+                <ScalarProperty Name="NextDueDate" ColumnName="NextDueDate" />
+                <ScalarProperty Name="Review" ColumnName="Review" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventories">
+            <EntityTypeMapping TypeName="AirportMaintenanceSystemModel.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="AirportMaintenanceSystemModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemCost" ColumnName="ItemCost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operations">
+            <EntityTypeMapping TypeName="AirportMaintenanceSystemModel.Operation">
+              <MappingFragment StoreEntitySet="Operations">
+                <ScalarProperty Name="OperationId" ColumnName="OperationId" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="AirportMaintenanceSystemModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleTitle" ColumnName="RoleTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="AirportMaintenanceSystemModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+                <ScalarProperty Name="StaffEmail" ColumnName="StaffEmail" />
+                <ScalarProperty Name="StaffPhoneNo" ColumnName="StaffPhoneNo" />
+                <ScalarProperty Name="StaffAddress" ColumnName="StaffAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLoginRegisters">
+            <EntityTypeMapping TypeName="AirportMaintenanceSystemModel.UserLoginRegister">
+              <MappingFragment StoreEntitySet="UserLoginRegister">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssignTasks">
+            <EntityTypeMapping TypeName="AirportMaintenanceSystemModel.AssignTask">
+              <MappingFragment StoreEntitySet="AssignTask">
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="OperationId" ColumnName="OperationId" />
+                <ScalarProperty Name="Staff" ColumnName="Staff" />
+                <ScalarProperty Name="Task" ColumnName="Task" />
+                <ScalarProperty Name="AssignTaskId" ColumnName="AssignTaskId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
